@@ -1,0 +1,100 @@
+{
+  "name": "comment-md",
+  "displayName": "Comment MD",
+  "description": "Preview Markdown files with persistent per-selection comments and Mermaid support.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "private": true,
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "markdown",
+    "preview",
+    "comments",
+    "review",
+    "mermaid"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "commentMd.openPreview",
+        "title": "Open Comment Preview",
+        "category": "Comment MD"
+      },
+      {
+        "command": "commentMd.submit",
+        "title": "Submit All Comments",
+        "category": "Comment MD"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "commentMd.preview",
+        "displayName": "Comment MD Preview",
+        "selector": [
+          { "filenamePattern": "*.md" },
+          { "filenamePattern": "*.markdown" }
+        ],
+        "priority": "option"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "commentMd.openPreview",
+          "when": "resourceExtname == .md || resourceExtname == .markdown"
+        },
+        {
+          "command": "commentMd.submit",
+          "when": "commentMd.previewOpen"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "commentMd.openPreview",
+          "when": "resourceExtname == .md || resourceExtname == .markdown",
+          "group": "navigation@99"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "commentMd.openPreview",
+          "when": "resourceExtname == .md || resourceExtname == .markdown",
+          "group": "navigation@99"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "commentMd.openPreview",
+          "when": "resourceExtname == .md || resourceExtname == .markdown",
+          "group": "navigation@99"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "vscode:prepublish": "npm run compile && node ./scripts/copy-mermaid.js",
+    "postinstall": "node ./scripts/copy-mermaid.js",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "mermaid": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.1",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.4.5"
+  }
+}
