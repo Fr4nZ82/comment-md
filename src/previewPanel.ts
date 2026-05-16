@@ -206,18 +206,26 @@ export class PreviewPanel {
 
     const sentToChat = await this.tryInsertIntoClaudeChat(mdFile);
 
-    const summary = `Comment MD: ${payload.comments.length} comment(s) submitted.`;
+    const snapshot = this.store.getAll();
+    this.store.clear();
+    this.sendUpdate();
+
+    const summary = `Comment MD: ${snapshot.length} comment(s) submitted.`;
     const detail = sentToChat
       ? 'Reference inserted into Claude chat — review and press Enter.'
       : 'Copied to clipboard + saved on disk.';
     const choice = await vscode.window.showInformationMessage(
       `${summary} ${detail}`,
       'Open submission',
+      'Undo',
       'OK'
     );
     if (choice === 'Open submission') {
       const doc = await vscode.workspace.openTextDocument(vscode.Uri.file(mdFile));
       vscode.window.showTextDocument(doc, { preview: false });
+    } else if (choice === 'Undo') {
+      this.store.restore(snapshot);
+      this.sendUpdate();
     }
     this.panel.webview.postMessage({ type: 'submitDone', file: mdFile, sentToChat });
   }

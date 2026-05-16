@@ -10,6 +10,6 @@ All notable changes to the "comment-md" extension will be documented in this fil
 - Custom Markdown preview webview with persistent per-selection comments.
 - Mermaid diagram rendering (bundled, no companion extension required).
 - Sidecar JSON cache per source file under `.comment-md-cache/`; original `.md` is never modified.
-- Submit flow: serializes comments to JSON + chat-friendly Markdown, copies JSON to clipboard, writes both to disk.
+- Submit flow: serializes comments to JSON + chat-friendly Markdown, copies JSON to clipboard, writes both to disk, and clears the cache (Undo available from the notification).
 - Best-effort handoff to the Claude Code VSCode extension on submit (auto `@`-mention of the submission file in chat).
 - Custom editor provider registered under `commentMd.preview` so the preview shows up in "Reopen Editor With…".

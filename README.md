@@ -66,6 +66,7 @@ With a `.md` file open, run **View: Reopen Editor With…** (or right-click the 
    - All your comments are bundled into a single batch, copied to your clipboard, and saved into `.comment-md-cache/` in your workspace.
    - If you also have the [Claude Code](https://marketplace.visualstudio.com/items?itemName=Anthropic.claude-code) extension installed, the batch is automatically inserted into the Claude chat as an `@`-reference. Just type your follow-up (e.g. *"reply to each comment"*) and press Enter — Claude reads the file and sees both a human-friendly summary and the raw data.
    - With any other chat extension (or none): paste from the clipboard, or open the saved submission file from the notification.
+   - After a successful submit, the sidebar is cleared so you're ready for the next review. If you didn't mean to send yet, click **Undo** in the notification to bring the comments back.
 
 ---
 

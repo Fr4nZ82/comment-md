@@ -97,6 +97,16 @@ export class CommentStore {
     return false;
   }
 
+  clear(): void {
+    this.comments = [];
+    this.save();
+  }
+
+  restore(snapshot: Comment[]): void {
+    this.comments = snapshot.map((c) => ({ ...c }));
+    this.save();
+  }
+
   get cachePath(): string {
     return this.cacheFile;
   }
