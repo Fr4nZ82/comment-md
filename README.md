@@ -22,7 +22,7 @@ When you're done annotating, click **Submit** and your comments are bundled and 
 
 ## Install
 
-Install **Comment MD** from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Fr4nz82.comment-md), or from inside VSCode:
+Install **Comment MD** from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Fr4nZ82.comment-md), or from inside VSCode:
 
 1. Open the **Extensions** view (`Ctrl+Shift+X`).
 2. Search for **Comment MD**.
