@@ -3,8 +3,16 @@
   "displayName": "Comment MD",
   "description": "Preview Markdown files with persistent per-selection comments and Mermaid support.",
   "version": "0.1.0",
-  "publisher": "local",
-  "private": true,
+  "publisher": "Fr4nz82",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fr4nZ82/comment-md.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fr4nZ82/comment-md/issues"
+  },
+  "homepage": "https://github.com/Fr4nZ82/comment-md#readme",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -85,7 +93,8 @@
     "watch": "tsc -w -p .",
     "vscode:prepublish": "npm run compile && node ./scripts/copy-mermaid.js",
     "postinstall": "node ./scripts/copy-mermaid.js",
-    "package": "vsce package"
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "dependencies": {
     "markdown-it": "^14.1.0",
@@ -95,6 +104,7 @@
     "@types/markdown-it": "^14.1.1",
     "@types/node": "^20.11.0",
     "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^3.2.0",
     "typescript": "^5.4.5"
   }
 }

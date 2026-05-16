@@ -245,17 +245,27 @@ export class PreviewPanel {
       if (!insertCmd) return false;
 
       if (!useTerminal) {
-        const openCmd = preferredLocation === 'sidebar'
-          ? 'claude-vscode.sidebar.open'
-          : 'claude-vscode.editor.openLast';
-        if (allCommands.includes(openCmd)) {
-          try { await vscode.commands.executeCommand(openCmd); } catch { /* noop */ }
+        const hasExistingClaudePanel = vscode.window.tabGroups.all
+          .flatMap((g) => g.tabs)
+          .some((t) => {
+            const input = t.input as { viewType?: string } | undefined;
+            return typeof input?.viewType === 'string' && /claude/i.test(input.viewType);
+          });
+
+        if (!hasExistingClaudePanel) {
+          const openCmd = preferredLocation === 'sidebar'
+            ? 'claude-vscode.sidebar.open'
+            : 'claude-vscode.editor.openLast';
+          if (allCommands.includes(openCmd)) {
+            try { await vscode.commands.executeCommand(openCmd); } catch { /* noop */ }
+          }
         }
       }
 
-      const doc = await vscode.workspace.openTextDocument(vscode.Uri.file(submissionFile));
+      const submissionUri = vscode.Uri.file(submissionFile);
+      const doc = await vscode.workspace.openTextDocument(submissionUri);
       const editor = await vscode.window.showTextDocument(doc, {
-        preview: false,
+        preview: true,
         preserveFocus: false,
         viewColumn: vscode.ViewColumn.Active,
       });
@@ -265,6 +275,17 @@ export class PreviewPanel {
       editor.revealRange(editor.selection);
 
       await vscode.commands.executeCommand(insertCmd);
+
+      const submissionTab = vscode.window.tabGroups.all
+        .flatMap((g) => g.tabs)
+        .find((t) => {
+          const input = t.input as { uri?: vscode.Uri } | undefined;
+          return input?.uri?.toString() === submissionUri.toString();
+        });
+      if (submissionTab) {
+        try { await vscode.window.tabGroups.close(submissionTab); } catch { /* noop */ }
+      }
+
       return true;
     } catch (e) {
       console.error('[comment-md] tryInsertIntoClaudeChat failed', e);
