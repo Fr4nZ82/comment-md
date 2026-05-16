@@ -27,10 +27,23 @@
   ],
   "keywords": [
     "markdown",
-    "preview",
+    "markdown preview",
+    "comment",
     "comments",
+    "annotation",
+    "annotate",
     "review",
-    "mermaid"
+    "code review",
+    "mermaid",
+    "claude",
+    "claude code",
+    "anthropic",
+    "copilot",
+    "github copilot",
+    "chat",
+    "llm",
+    "ai",
+    "feedback"
   ],
   "activationEvents": [
     "onLanguage:markdown"
