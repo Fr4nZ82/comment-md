@@ -20,32 +20,15 @@ When you're done annotating, click **Submit** and the extension exports your com
 
 ---
 
-## Installing
+## Install
 
-### From source (development)
+Install **Comment MD** from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Fr4nz82.comment-md), or from inside VSCode:
 
-```powershell
-cd e:\projects\comment-md
-npm install
-npm run compile
-```
+1. Open the **Extensions** view (`Ctrl+Shift+X`).
+2. Search for **Comment MD**.
+3. Click **Install**.
 
-`npm install` automatically copies `mermaid.min.js` from `node_modules/` into `media/`.
-
-Then in VSCode:
-
-1. Open the `comment-md` folder.
-2. Press **F5** ("Run Extension").
-3. In the new Extension Development Host window, open any `.md` file.
-
-### Packaging as a `.vsix`
-
-```powershell
-npm install -g @vscode/vsce
-vsce package
-```
-
-Produces `comment-md-0.1.0.vsix`. Install it with **Extensions: Install from VSIX...** from the command palette.
+No configuration is required — open any `.md` file and follow the steps below.
 
 ---
 
@@ -96,11 +79,11 @@ With a `.md` file open, run **View: Reopen Editor With...** (or right-click the 
 
 ```json
 {
-  "file": "C:/path/to/file.md",
+  "file": "/path/to/file.md",
   "submittedAt": "2026-05-15T12:34:56.000Z",
   "comments": [
     {
-      "file": "C:/path/to/file.md",
+      "file": "/path/to/file.md",
       "startLine": 12,
       "endLine": 14,
       "selectedText": "the highlighted snippet from the preview",
@@ -160,3 +143,26 @@ Add this to your repo's `.gitignore` if you don't want to commit reviews:
 - Comments persist across file edits, but if blocks are moved/renumbered the saved `startLine`/`endLine` may drift. Re-anchor manually via Edit/Delete.
 - The preview re-renders when the file is saved.
 - Mermaid runs in the webview with `securityLevel: 'loose'` so directives and click handlers in diagrams won't fire across the extension boundary.
+
+---
+
+## Development
+
+Clone, install, compile, and launch the Extension Development Host:
+
+```bash
+git clone https://github.com/Fr4nZ82/comment-md.git
+cd comment-md
+npm install
+npm run compile
+```
+
+In VSCode, open the cloned folder and press **F5** ("Run Extension"). A new Extension Development Host window launches with the extension loaded — open any `.md` file there to iterate.
+
+To produce a local `.vsix`:
+
+```bash
+npm run package
+```
+
+Issues and contributions: <https://github.com/Fr4nZ82/comment-md/issues>.
