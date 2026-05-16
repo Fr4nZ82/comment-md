@@ -1,5 +1,10 @@
 # Comment MD
 
+[![Marketplace](https://img.shields.io/visual-studio-marketplace/v/Fr4nZ82.comment-md?label=Marketplace&color=007ACC)](https://marketplace.visualstudio.com/items?itemName=Fr4nZ82.comment-md)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/Fr4nZ82.comment-md?label=installs)](https://marketplace.visualstudio.com/items?itemName=Fr4nZ82.comment-md)
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/Fr4nZ82.comment-md?label=rating)](https://marketplace.visualstudio.com/items?itemName=Fr4nZ82.comment-md&ssr=false#review-details)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 A VSCode extension that opens Markdown files in a rich preview where you can attach **persistent comments** to any text selection. Mermaid diagrams are rendered inline. Comments live in a sidecar cache — the original `.md` file is never touched.
 
 When you're done annotating, click **Submit** and your comments are bundled and handed off to an LLM chat (or simply copied to your clipboard, ready to paste anywhere).
