@@ -4,6 +4,8 @@ A VSCode extension that opens Markdown files in a rich preview where you can att
 
 When you're done annotating, click **Submit** and the extension exports your comments as a structured JSON payload (copied to clipboard + saved to disk) ready to feed to a code-review tool, an LLM chat, or any downstream pipeline.
 
+![Comment MD — selecting text, adding comments, and submitting them to a Claude Code chat](docs/demo.gif)
+
 ---
 
 ## Features

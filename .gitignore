@@ -5,3 +5,4 @@ media/mermaid.min.js
 .comment-md-cache/
 *.vsix
 CLAUDE.md
+docs/*.mp4

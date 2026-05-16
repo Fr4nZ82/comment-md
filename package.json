@@ -13,10 +13,16 @@
     "url": "https://github.com/Fr4nZ82/comment-md/issues"
   },
   "homepage": "https://github.com/Fr4nZ82/comment-md#readme",
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#1e293b",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
+    "Visualization",
     "Other"
   ],
   "keywords": [
